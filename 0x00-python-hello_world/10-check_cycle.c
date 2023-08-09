@@ -1,24 +1,23 @@
 #include "lists.h"
 /**
- * check_cycle - check if linked list is cyclic
- * @list: the linked list
- * Return: 0 on False and 1 if true
+ * check_cycle - function that checks if a linked list\\
+ contains a cycle
+ * @list: the pointer to the head node of the list
+ * Return: 1 if cycle is found, 0 if not found
  */
+
 int check_cycle(listint_t *list)
 {
-	listint_t *current, *nxt;
+	listint_t *fast = list, *slow = list;
 
-	if (list  == NULL)
-		return (0);
-	current = list;
-	nxt = list;
-	while (nxt != NULL && nxt->next != NULL)
+	while (fast != NULL && fast->next != NULL)
 	{
-		current = current->next;
-		nxt = hxt->next->next;
+		slow = slow->next;
+		fast = fast->next->next;
 
-		if (current == nxt)
+		if (slow == fast)
 			return (1);
 	}
 	return (0);
 }
+
