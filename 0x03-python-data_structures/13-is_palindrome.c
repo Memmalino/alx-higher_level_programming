@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * is_palindrom - function that check if a linked list is palindrome
+ * is_palindrome - function that check if a linked list is palindrome
  * @head: double pointer to the head of the linked list to check
  * Return: return 0 if it is not palindrome, 1 if it is a palindrome
  */
@@ -36,7 +36,7 @@ int is_palindrome(listint_t **head)
 		name[i] = new->n;
 		new = new->next;
 	}
-	for (a = 0; a < n/2; a++)
+	for (a = 0; a < n / 2; a++)
 	{
 		j = n - a - 1;
 		if (name[a] != name[j])
