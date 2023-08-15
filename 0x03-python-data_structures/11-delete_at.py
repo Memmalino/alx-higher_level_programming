@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def deletet_at(my_list=[], idx=0):
     """Delete an item in the list
 

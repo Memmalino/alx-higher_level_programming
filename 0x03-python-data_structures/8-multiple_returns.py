@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def multiple_returns(sentence):
     """calculate length of stence and first character
 
