@@ -5,7 +5,6 @@
  * @p: the pointer to the python object
  * Return: void
  */
-
 void print_python_bytes(PyObject *p)
 {
 	Py_ssize_t i;
@@ -34,14 +33,15 @@ void print_python_bytes(PyObject *p)
 	else
 		printf("  [ERROR] Invalid Bytes Object\n");
 }
+
 /**
  * print_python_list - function that prints python list object
- * @p: the ;ointer to the python list object
+ * @p: the pointer to the python list object
  * Return: void
  */
 void print_python_list(PyObject *p)
 {
-	Py_ssize_t size = PyList_Size(p);
+	Py_ssize_t size = PySequence_Size(p);
 	Py_ssize_t i;
 	PyObject *item;
 
@@ -51,7 +51,7 @@ void print_python_list(PyObject *p)
 
 	for (i = 0; i < size; i++)
 	{
-		item = PyList_GetItem(p, i);
+		item = PySequence_GetItem(p, i);
 		printf("Element %ld: ", i);
 
 		if (PyBytes_Check(item))
@@ -60,6 +60,8 @@ void print_python_list(PyObject *p)
 			print_python_list(item);
 		else
 			printf("%s\n", Py_TYPE(item)->tp_name);
+		Py_DECREF(item);
 	}
 }
+
 
