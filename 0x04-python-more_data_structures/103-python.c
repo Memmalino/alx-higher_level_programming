@@ -71,10 +71,9 @@ void print_python_list(PyObject *p)
 				printf("%s\n", PyUnicode_AsUTF8(name));
 				Py_DECREF(name);
 			}
+			Py_DECREF(item_type);
 		}
-		Py_DECREF(item_type);
 		}
-	}
-
 	Py_DECREF(item);
+	}
 }
