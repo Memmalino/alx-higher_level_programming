@@ -59,9 +59,25 @@ void print_python_list(PyObject *p)
 		else if (PyList_Check(item))
 			print_python_list(item);
 		else
-			printf("%s\n", Py_TYPE(item)->tp_name);
-		Py_DECREF(item);
+		{
+		PyObject *item_type = PyObject_Type(item);
+		if (item_type != NULL)
+		{
+			PyObject *name = PyObject_GetAttrString(item_type, "__name__");
+			if (name != NULL && PyUnicode_Check(name))
+			{
+				printf("%s\n", PyUnicode_AsUTF8(name));
+				Py_DECREF(name);
+			}
+			else
+				printf("Unknown Type\n");
+			Py_DECREF(item_type);
+		}
+		else
+			printf("Invalid Object\n");
+		}
 	}
+	Py_DECREF(item);
 }
 
 
