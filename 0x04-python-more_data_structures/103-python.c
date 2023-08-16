@@ -44,6 +44,8 @@ void print_python_list(PyObject *p)
 	Py_ssize_t size = PySequence_Size(p);
 	Py_ssize_t i;
 	PyObject *item;
+	PyObject *item_type;
+	PyObject *name;
 
 	printf("[*] Python list info\n");
 	printf("[*] Size of the Python List = %ld\n", size);
@@ -60,24 +62,18 @@ void print_python_list(PyObject *p)
 			print_python_list(item);
 		else
 		{
-		PyObject *item_type = PyObject_Type(item);
+		item_type = PyObject_Type(item);
 		if (item_type != NULL)
 		{
-			PyObject *name = PyObject_GetAttrString(item_type, "__name__");
+			name = PyObject_GetAttrString(item_type, "__name__");
 			if (name != NULL && PyUnicode_Check(name))
 			{
 				printf("%s\n", PyUnicode_AsUTF8(name));
 				Py_DECREF(name);
 			}
-			else
-				printf("Unknown Type\n");
 			Py_DECREF(item_type);
 		}
-		else
-			printf("Invalid Object\n");
 		}
-	}
 	Py_DECREF(item);
+	}
 }
-
-
