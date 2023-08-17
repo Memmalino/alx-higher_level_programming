@@ -12,7 +12,10 @@ def print_reversed_list_integer(my_list=[]):
         return ('')
     if len(my_list) == 0:
         return ('')
-    length = len(my_list) - 1
-    while length >= 0:
-        print("{}".format(my_list[length]))
-        length -= 1
+    for i in range(int(len(my_list) / 2)):
+        ldx = len(my_list) - i - 1
+        elem = my_list[ldx]
+        my_list[ldx] = my_list[i]
+        my_list[i] = elem
+    for i in my_list:
+        print("{:d}".format(i))
