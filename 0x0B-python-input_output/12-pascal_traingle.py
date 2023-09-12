@@ -1,31 +1,19 @@
 #!/usr/bin/python3
-"""wrting a function for pascal triangle"""
+"""This module defines a Pascal's Triangle function"""
 
 
 def pascal_triangle(n):
-    """write a pascal triangle
-
-    Args:
-        n: the number
-
-    Returns:
-        list of list of its pascal numbers
+    """Represents Pascal's Triangle of size n
     """
-    outer_list = []
-    if (n <= 0):
-        return (outer_list)
-    n = n + 1
-    for i in range(1, n):
-        if i != 1:
-            mey = outer_list[i - 2].copy()
-            meya = []
-            for a, b in enumerate(mey):
-                if a != 0:
-                    meya.append(mey[a - 1] + b)
-                else:
-                    meya.append(1)
-            meya.append(1)
-            outer_list.append(meya)
-        else:
-            outer_list.append([1])
-    return (outer_list)
+    if n <= 0:
+        return []
+
+    triangles = [[1]]
+    while len(triangles) != n:
+        tri = triangles[-1]
+        tmp = [1]
+        for i in range(len(tri) - 1):
+            tmp.append(tri[i] + tri[i + 1])
+        tmp.append(1)
+        triangles.append(tmp)
+    return triangles
