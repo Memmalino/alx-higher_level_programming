@@ -11,20 +11,20 @@ module.exports = class Rectangle {
     for (let i = 0; i < this.height; i++) {
       let row = '';
       for (let j = 0; j < this.width; j++) {
-        row += 'x';
+        row += 'X';
       }
       console.log(row);
     }
   }
 
   rotate () {
-    const tmp = this.width;
-    this.width = this.height;
-    this.height = tmp;
+    const a = this.height;
+    this.height = this.width;
+    this.width = a;
   }
 
   double () {
-    this.width *= 2;
-    this.height *= 2;
+    this.width = 2 * this.width;
+    this.height = 2 * this.height;
   }
 };
