@@ -32,5 +32,5 @@ class TestMaxInteger(unittest.TestCase):
 
     def test_string(self):
         """test string"""
-        name = "Mustapha"
+        name = "Bufferss"
         self.assertEqual(max_integer(name), 'u') 
