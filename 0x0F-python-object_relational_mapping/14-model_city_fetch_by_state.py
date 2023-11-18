@@ -28,4 +28,3 @@ if __name__ == "__main__":
         print('{}: ({}) {}'.format(state.name, city.id, city.name))
 
     from_session.close()
-
