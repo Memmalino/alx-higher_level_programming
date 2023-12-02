@@ -12,5 +12,3 @@ if __name__ == '__main__':
     pst = parse.urlencode({'email': argv[2]}).encode('utf-8')
     with request.urlopen(url, pst) as response:
         print(response.read().decode('utf-8'))
-
-
